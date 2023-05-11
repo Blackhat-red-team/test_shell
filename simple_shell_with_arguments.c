@@ -7,7 +7,7 @@
 #define MAX_COMMAND_LENGTH 100
 #define MAX_ARGUMENTS 10
 /*
-* main - Entry point of the program.
+* main - Entry point of the program
 */
 int main(void)
 {
