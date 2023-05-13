@@ -1,19 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
+#include "shell.h"
 
-#define MAX_COMMAND_LENGTH 100
-#define MAX_ARGUMENTS 10
+int main(void)
+{
+char command[MAX_COMMAND_LENGTH];
+char *args[MAX_ARGUMENTS + 1];
 
-int main(void) {
-    char command[MAX_COMMAND_LENGTH];
-    char *args[MAX_ARGUMENTS + 1];
-
-    while (1) {
+    while (1)
+    {
         printf("simple_shell$ ");  
-        if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL) {
+        if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL)
+        {
             printf("\n");  
             break;
         }
@@ -22,7 +18,8 @@ int main(void) {
 
         char *token = strtok(command, " ");
         int i = 0;
-        while (token != NULL && i < MAX_ARGUMENTS) {
+        while (token != NULL && i < MAX_ARGUMENTS)
+        {
             args[i] = token;
             token = strtok(NULL, " ");
             i++;
@@ -33,16 +30,19 @@ int main(void) {
         if (pid < 0) {
             perror("fork");
             exit(EXIT_FAILURE);
-        } else if (pid == 0) {
-            // العملية الفرعية
+        } 
+        else if (pid == 0)
+        {
             execvp(args[0], args);
             perror("execvp");
             exit(EXIT_FAILURE);
-        } else {
+        }
+        else 
+        {
           
             wait(NULL);  
         }
     }
 
-    return 0;
+    return (0);
 }
