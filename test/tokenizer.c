@@ -9,54 +9,44 @@
 
 char **strtow(char *str, char *d)
 {
-	int i, j, k, m, numwords = 0;
+	int i, k, k, m, numwords = 0;
 	char **s;
 
 	if (str == NULL || str[0] == 0)
-		return NULL;
+		return (NULL);
 	if (!d)
 		d = " ";
-
 	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (!is_del(str[i], d) && (is_del(str[i + 1], d) || !str[i + 1]))
+		if (!is_delim(str[i], d) && (is_delim(str[i + 1], d) || !str[i + 1]))
 			numwords++;
-	}
 
 	if (numwords == 0)
-		return NULL;
-
+		return (NULL);
 	s = malloc((1 + numwords) * sizeof(char *));
 	if (!s)
-		return NULL;
-
-	for (i = 0, j = 0; j < numwords; j++)
+		return (NULL);
+	for (i = 0, k = 0; k < numwords; k++)
 	{
-		while (is_del(str[i], d))
+		while (is_delim(str[i], d))
 			i++;
-
 		k = 0;
-		while (!is_del(str[i + k], d) && str[i + k])
+		while (!is_delim(str[i + k], d) && str[i + k])
 			k++;
-
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
+		s[k] = malloc((k + 1) * sizeof(char));
+		if (!s[k])
 		{
-			for (k = 0; k < j; k++)
+			for (k = 0; k < k; k++)
 				free(s[k]);
 			free(s);
-			return NULL;
+			return (NULL);
 		}
-
 		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
-		s[j][m] = 0;
+			s[k][m] = str[i++];
+		s[k][m] = 0;
 	}
-
-	s[j] = NULL;
-	return s;
+	s[k] = NULL;
+	return (s);
 }
-
 
 /**
  * **strtow2 - splits a string into words
@@ -66,7 +56,7 @@ char **strtow(char *str, char *d)
  */
 char **strtow2(char *str, char d)
 {
-	int i, j, k, m, numwords = 0;
+	int i, k, k, m, numwords = 0;
 	char **s;
 
 	if (str == NULL || str[0] == 0)
@@ -80,25 +70,25 @@ char **strtow2(char *str, char d)
 	s = malloc((1 + numwords) * sizeof(char *));
 	if (!s)
 		return (NULL);
-	for (i = 0, j = 0; j < numwords; j++)
+	for (i = 0, k = 0; k < numwords; k++)
 	{
 		while (str[i] == d && str[i] != d)
 			i++;
 		k = 0;
 		while (str[i + k] != d && str[i + k] && str[i + k] != d)
 			k++;
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
+		s[k] = malloc((k + 1) * sizeof(char));
+		if (!s[k])
 		{
-			for (k = 0; k < j; k++)
+			for (k = 0; k < k; k++)
 				free(s[k]);
 			free(s);
 			return (NULL);
 		}
 		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
-		s[j][m] = 0;
+			s[k][m] = str[i++];
+		s[k][m] = 0;
 	}
-	s[j] = NULL;
+	s[k] = NULL;
 	return (s);
 }
