@@ -42,7 +42,7 @@ char *dup_chars(char *pathstr, int start, int stop)
 		m++;
 	}
 	buf[k] = '\0';
-	return buf;
+	return (buf);
 }
 
 
@@ -60,12 +60,12 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	char *path;
 
 	if (!pathstr)
-		return NULL;
+		return (NULL);
 
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
 		if (is_cmd(info, cmd))
-			return cmd;
+			return (cmd);
 	}
 
 	for (m = 0; ; m++)
@@ -81,12 +81,12 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 				_strcat(path, cmd);
 			}
 			if (is_cmd(info, path))
-				return path;
+				return (path);
 			if (!pathstr[m])
 				break;
 			curr_pos = m;
 		}
 	}
 
-	return NULL;
+	return (NULL);
 }

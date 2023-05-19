@@ -90,7 +90,7 @@ int print_d(int input, int fd)
 	__putchar('0' + current);
 	count++;
 
-	return count;
+	return (count);
 }
 
 
@@ -126,8 +126,8 @@ char *convert_number(long int num, int base, int flags)
 
 	if (sign)
 		*--ptr = sign;
-	
-	return ptr;
+
+	return (ptr);
 }
 
 

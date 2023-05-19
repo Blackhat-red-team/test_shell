@@ -9,26 +9,26 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	int m, j;
 	char *s = dest;
 
-	for (i = 0; src[i] != '\0' && i < n - 1; i++)
+	m = 0;
+	while (src[m] != '\0' && m < n - 1)
 	{
-		dest[i] = src[i];
+		dest[m] = src[m];
+		m++;
 	}
-
-	if (i < n)
+	if (m < n)
 	{
-		int j;
-		for (j = i; j < n; j++)
+		j = m;
+		while (j < n)
 		{
 			dest[j] = '\0';
+			j++;
 		}
 	}
-
-	return s;
+	return (s);
 }
-
 
 /**
  **_strncat - concatenates two strings
@@ -39,22 +39,22 @@ char *_strncpy(char *dest, char *src, int n)
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int i, j;
+	int m, j;
 	char *s = dest;
 
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-
-	for (j = 0; src[j] != '\0' && j < n; j++)
+	m = 0;
+	j = 0;
+	while (dest[m] != '\0')
+		m++;
+	while (src[j] != '\0' && j < n)
 	{
-		dest[i] = src[j];
-		i++;
+		dest[m] = src[j];
+		m++;
+		j++;
 	}
-
 	if (j < n)
-		dest[i] = '\0';
-
-	return s;
+		dest[m] = '\0';
+	return (s);
 }
 
 /**
@@ -65,11 +65,10 @@ char *_strncat(char *dest, char *src, int n)
  */
 char *_strchr(char *s, char c)
 {
-	for (; *s != '\0'; s++)
-	{
+	do {
 		if (*s == c)
-			return s;
-	}
+			return (s);
+	} while (*s++ != '\0');
 
-	return NULL;
+	return (NULL);
 }

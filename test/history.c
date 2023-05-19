@@ -90,31 +90,22 @@ int read_history(info_t *info)
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(fd);
-
-	m = 0;
-	while (m < fsize)
-	{
+	for (m = 0; m < fsize; m++)
 		if (buf[m] == '\n')
 		{
 			buf[m] = 0;
 			build_history_list(info, buf + last, linecount++);
 			last = m + 1;
 		}
-		m++;
-	}
-
 	if (last != m)
 		build_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
-
 	while (info->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(info->history), 0);
-
 	renumber_history(info);
 	return (info->histcount);
 }
-
 
 /**
  * build_history_list - adds entry to a history linked list
@@ -148,10 +139,10 @@ int renumber_history(info_t *info)
 	list_t *node = info->history;
 	int m = 0;
 
-	for (; node; node = node->next)
+	while (node)
 	{
 		node->num = m++;
+		node = node->next;
 	}
-
 	return (info->histcount = m);
 }

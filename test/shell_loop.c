@@ -55,7 +55,7 @@ int hsh(info_t *info, char **av)
  */
 int find_builtin(info_t *info)
 {
-	int m, built_in_ret = -1;
+	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -68,11 +68,11 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (m = 0; builtintbl[m].type; m++)
-		if (_strcmp(info->argv[0], builtintbl[m].type) == 0)
+	for (i = 0; builtintbl[i].type; i++)
+		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[m].func(info);
+			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -87,7 +87,7 @@ int find_builtin(info_t *info)
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int m = 0, k = 0;
+	int i, k;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -95,12 +95,9 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	while (info->arg[m])
-	{
-		if (!is_del(info->arg[m], " \t\n"))
+	for (i = 0, k = 0; info->arg[i]; i++)
+		if (!is_del(info->arg[i], " \t\n"))
 			k++;
-		m++;
-	}
 	if (!k)
 		return;
 
@@ -112,7 +109,8 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((active(info) || _getenv(info, "PATH=") || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+		if ((active(info) || _getenv(info, "PATH=")
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -121,7 +119,6 @@ void find_cmd(info_t *info)
 		}
 	}
 }
-
 
 /**
  * fork_cmd - forks a an exec thread to run cmd

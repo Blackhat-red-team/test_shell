@@ -12,13 +12,13 @@ char *_strcpy(char *dest, char *src)
 	int m;
 
 	if (dest == src || src == NULL)
-		return dest;
+		return (dest);
 
 	for (m = 0; src[m]; m++)
 		dest[m] = src[m];
 
 	dest[m] = '\0';
-	return dest;
+	return (dest);
 }
 
 
@@ -34,20 +34,20 @@ char *_strdup(const char *str)
 	char *ret;
 
 	if (str == NULL)
-		return NULL;
+		return (NULL);
 
 	for (; str[length]; length++)
 		;
 
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
-		return NULL;
+		return (NULL);
 
 	for (length = 0; str[length]; length++)
 		ret[length] = str[length];
 
 	ret[length] = '\0';
-	return ret;
+	return (ret);
 }
 
 /**

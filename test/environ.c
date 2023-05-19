@@ -28,9 +28,9 @@ char *_getenv(info_t *info, const char *name)
 	{
 		q = starts_with(node->str, name);
 		if (q && *q)
-			return q;
+			return (q);
 	}
-	return NULL;
+	return (NULL);
 }
 
 
