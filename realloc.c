@@ -43,7 +43,7 @@ free(c);
  * _realloc - block of memory
  * @ptr: previous malloc
  * @old_size: size previous block
- * @new_size: size of new bllock 
+ * @new_size: size of new bllock
  * Return: pointter to make block
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
