@@ -160,7 +160,9 @@ void *_realloc(void *, unsigned int, unsigned int);
 /* toem_memory.c */
 int bfree(void **);
 
-/* toem_atoi.c */
+
+
+/* atoi.c */
 int active(info_t *);
 int determine(char, char *);
 int range(int);
