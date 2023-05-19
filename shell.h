@@ -12,4 +12,12 @@
 #include <errno.h>
 #include <string.h>
 
+
+
+/* atoi.c */
+int _atoi(char *);
+int active(info_t *);
+int range(int);
+int determine(char, char *);
+
 #endif
