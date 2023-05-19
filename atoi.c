@@ -1,23 +1,17 @@
 #include "shell.h"
 
+
 /**
- * active - which check that shell is in active mode
- * @info: that contain and stuct address
- * Return: 1 if in active mode , o in else
+ * active - true if active false return 0
+ * @info: struct address
+ * Return:  active mode 1, otherwise 0
 */
 
 int active(info_t *info)
 {
-int readfd;
-if (isatty(STDIN_FILENO) && info->readfd <= 2)
-{
-return (1);
+return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
-else
-{
-return (0);
-}
-}
+
 
 /**
  * determine - checks character
@@ -35,6 +29,7 @@ return (1);
 return (0);
 }
 
+
 /**
  *range - check the char in range
  *@c: char
@@ -48,6 +43,7 @@ return (1);
 else
 return (0);
 }
+
 
 /**
  *_atoi - string to int
