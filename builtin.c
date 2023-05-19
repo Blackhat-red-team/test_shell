@@ -72,7 +72,7 @@ return (1);
 }
 
 _puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-chdir_ret = /* TODO: what should this be? */
+chdir_ret = /* what should this be */
 chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 }
 else
@@ -88,6 +88,7 @@ else
 _setenv(info, "OLDPWD", _getenv(info, "PWD="));
 _setenv(info, "PWD", getcwd(buffer, 1024));
 }
+
 
 return (0);
 
