@@ -65,14 +65,16 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	}
 	if (node)
 	{
-		while (node->next)
-			node = node->next;
+		for (; node->next; node = node->next)
+		{
+		}
 		node->next = new_node;
 	}
 	else
 		*head = new_node;
 	return (new_node);
 }
+
 
 /**
  * print_list_str - prints only the str element of a list_t linked list
@@ -82,17 +84,17 @@ list_t *add_node_end(list_t **head, const char *str, int num)
  */
 size_t print_list_str(const list_t *h)
 {
-	size_t i = 0;
+	size_t m = 0;
 
-	while (h)
+	for (; h; h = h->next)
 	{
 		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		h = h->next;
-		i++;
+		m++;
 	}
-	return (i);
+	return m;
 }
+
 
 /**
  * delete_node_at_index - deletes node at given index
@@ -104,12 +106,12 @@ size_t print_list_str(const list_t *h)
 int delete_node_at_index(list_t **head, unsigned int index)
 {
 	list_t *node, *prev_node;
-	unsigned int i = 0;
+	unsigned int m;
 
 	if (!head || !*head)
 		return (0);
 
-	if (!index)
+	if (index == 0)
 	{
 		node = *head;
 		*head = (*head)->next;
@@ -117,22 +119,22 @@ int delete_node_at_index(list_t **head, unsigned int index)
 		free(node);
 		return (1);
 	}
-	node = *head;
-	while (node)
+
+	prev_node = *head;
+	for (m = 1, node = prev_node->next; node; m++, prev_node = node, node = node->next)
 	{
-		if (i == index)
+		if (m == index)
 		{
 			prev_node->next = node->next;
 			free(node->str);
 			free(node);
 			return (1);
 		}
-		i++;
-		prev_node = node;
-		node = node->next;
 	}
+
 	return (0);
 }
+
 
 /**
  * free_list - frees all nodes of a list

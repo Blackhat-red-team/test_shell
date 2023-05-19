@@ -12,10 +12,10 @@ int hsh(info_t *info, char **av)
 	ssize_t r = 0;
 	int builtin_ret = 0;
 
-	while (r != -1 && builtin_ret != -2)
+	for (; r != -1 && builtin_ret != -2;)
 	{
 		clear_info(info);
-		if (interactive(info))
+		if (active(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
 		r = get_input(info);
@@ -26,13 +26,13 @@ int hsh(info_t *info, char **av)
 			if (builtin_ret == -1)
 				find_cmd(info);
 		}
-		else if (interactive(info))
+		else if (active(info))
 			_putchar('\n');
 		free_info(info, 0);
 	}
 	write_history(info);
 	free_info(info, 1);
-	if (!interactive(info) && info->status)
+	if (!active(info) && info->status)
 		exit(info->status);
 	if (builtin_ret == -2)
 	{
@@ -42,6 +42,7 @@ int hsh(info_t *info, char **av)
 	}
 	return (builtin_ret);
 }
+
 
 /**
  * find_builtin - finds a builtin command
@@ -54,7 +55,7 @@ int hsh(info_t *info, char **av)
  */
 int find_builtin(info_t *info)
 {
-	int i, built_in_ret = -1;
+	int m, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -67,11 +68,11 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+	for (m = 0; builtintbl[m].type; m++)
+		if (_strcmp(info->argv[0], builtintbl[m].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[i].func(info);
+			built_in_ret = builtintbl[m].func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -86,7 +87,7 @@ int find_builtin(info_t *info)
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int i, k;
+	int m = 0, k = 0;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -94,9 +95,12 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_delim(info->arg[i], " \t\n"))
+	while (info->arg[m])
+	{
+		if (!is_del(info->arg[m], " \t\n"))
 			k++;
+		m++;
+	}
 	if (!k)
 		return;
 
@@ -108,8 +112,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+		if ((active(info) || _getenv(info, "PATH=") || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -118,6 +121,7 @@ void find_cmd(info_t *info)
 		}
 	}
 }
+
 
 /**
  * fork_cmd - forks a an exec thread to run cmd
