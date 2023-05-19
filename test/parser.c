@@ -33,18 +33,14 @@ int is_cmd(info_t *info, char *path)
 char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
-	int m = start, k = 0;
+	int i = 0, k = 0;
 
-	while (m < stop)
-	{
-		if (pathstr[m] != ':')
-			buf[k++] = pathstr[m];
-		m++;
-	}
-	buf[k] = '\0';
+	for (k = 0, i = start; i < stop; i++)
+		if (pathstr[i] != ':')
+			buf[k++] = pathstr[i];
+	buf[k] = 0;
 	return (buf);
 }
-
 
 /**
  * find_path - finds this cmd in the PATH string
@@ -56,23 +52,21 @@ char *dup_chars(char *pathstr, int start, int stop)
  */
 char *find_path(info_t *info, char *pathstr, char *cmd)
 {
-	int m, curr_pos = 0;
+	int i = 0, curr_pos = 0;
 	char *path;
 
 	if (!pathstr)
 		return (NULL);
-
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
 		if (is_cmd(info, cmd))
 			return (cmd);
 	}
-
-	for (m = 0; ; m++)
+	while (1)
 	{
-		if (!pathstr[m] || pathstr[m] == ':')
+		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path = dup_chars(pathstr, curr_pos, m);
+			path = dup_chars(pathstr, curr_pos, i);
 			if (!*path)
 				_strcat(path, cmd);
 			else
@@ -82,11 +76,11 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 			}
 			if (is_cmd(info, path))
 				return (path);
-			if (!pathstr[m])
+			if (!pathstr[i])
 				break;
-			curr_pos = m;
+			curr_pos = i;
 		}
+		i++;
 	}
-
 	return (NULL);
 }

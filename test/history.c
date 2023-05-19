@@ -43,20 +43,15 @@ int write_history(info_t *info)
 	free(filename);
 	if (fd == -1)
 		return (-1);
-
-	node = info->history;
-	while (node)
+	for (node = info->history; node; node = node->next)
 	{
 		_putsfd(node->str, fd);
 		_putfd('\n', fd);
-		node = node->next;
 	}
-
 	_putfd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
-
 
 /**
  * read_history - reads history from file
@@ -66,7 +61,7 @@ int write_history(info_t *info)
  */
 int read_history(info_t *info)
 {
-	int m, last = 0, linecount = 0;
+	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(info);
@@ -90,14 +85,14 @@ int read_history(info_t *info)
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(fd);
-	for (m = 0; m < fsize; m++)
-		if (buf[m] == '\n')
+	for (i = 0; i < fsize; i++)
+		if (buf[i] == '\n')
 		{
-			buf[m] = 0;
+			buf[i] = 0;
 			build_history_list(info, buf + last, linecount++);
-			last = m + 1;
+			last = i + 1;
 		}
-	if (last != m)
+	if (last != i)
 		build_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
@@ -137,12 +132,12 @@ int build_history_list(info_t *info, char *buf, int linecount)
 int renumber_history(info_t *info)
 {
 	list_t *node = info->history;
-	int m = 0;
+	int i = 0;
 
 	while (node)
 	{
-		node->num = m++;
+		node->num = i++;
 		node = node->next;
 	}
-	return (info->histcount = m);
+	return (info->histcount = i);
 }

@@ -9,18 +9,18 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	int m;
+	int i = 0;
 
-	if (dest == src || src == NULL)
+	if (dest == src || src == 0)
 		return (dest);
-
-	for (m = 0; src[m]; m++)
-		dest[m] = src[m];
-
-	dest[m] = '\0';
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
 	return (dest);
 }
-
 
 /**
  * _strdup - duplicates a string
@@ -35,36 +35,34 @@ char *_strdup(const char *str)
 
 	if (str == NULL)
 		return (NULL);
-
-	for (; str[length]; length++)
-		;
-
+	while (*str++)
+		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
-
-	for (length = 0; str[length]; length++)
-		ret[length] = str[length];
-
-	ret[length] = '\0';
+	for (length++; length--;)
+		ret[length] = *--str;
 	return (ret);
 }
 
 /**
- * _puts - prints an input string
- * @str: the string to be printed
+ *_puts - prints an input string
+ *@str: the string to be printed
  *
  * Return: Nothing
  */
 void _puts(char *str)
 {
+	int i = 0;
+
 	if (!str)
 		return;
-
-	for (; *str; str++)
-		_putchar(*str);
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
 }
-
 
 /**
  * _putchar - writes the character c to stdout
@@ -75,15 +73,15 @@ void _puts(char *str)
  */
 int _putchar(char c)
 {
-	static int m;
+	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || m >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(1, buf, m);
-		m = 0;
+		write(1, buf, i);
+		i = 0;
 	}
 	if (c != BUF_FLUSH)
-		buf[m++] = c;
+		buf[i++] = c;
 	return (1);
 }
