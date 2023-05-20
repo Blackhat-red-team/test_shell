@@ -9,7 +9,7 @@
 int _strtoint(char *s)
 {
 int v = 0;
-unsigned long int result = 0;
+unsigned long int res = 0;
 
 if (*s == '+')
 s++;  /* TODO: why does this make main return 255? */
@@ -17,15 +17,15 @@ for (v = 0;  s[v] != '\0'; v++)
 {
 if (s[v] >= '0' && s[v] <= '9')
 {
-result *= 10;
-result += (s[v] - '0');
-if (result > INT_MAX)
+res *= 10;
+res += (s[v] - '0');
+if (res > INT_MAX)
 return (-1);
 }
 else
 return (-1);
 }
-return (result);
+return (res);
 }
 
 /**
@@ -37,13 +37,13 @@ return (result);
  */
 void print_errorms(info_t *info, char *estr)
 {
-_eputs(info->fname);
-_eputs(": ");
+_eppu(info->fname);
+_eppu(": ");
 print_dec(info->line_count, STDERR_FILENO);
-_eputs(": ");
-_eputs(info->argv[0]);
-_eputs(": ");
-_eputs(estr);
+_eppu(": ");
+_eppu(info->argv[0]);
+_eppu(": ");
+_eppu(estr);
 }
 
 /**
@@ -55,12 +55,12 @@ _eputs(estr);
  */
 int print_dec(int input, int fd)
 {
-int (*__putchar)(char) = _putchar;
+int (*__putchar)(char) = _puuchi;
 int v, count = 0;
 unsigned int _abs_, current;
 
 if (fd == STDERR_FILENO)
-__putchar = _eputchar;
+__putchar = _epitch;
 if (input < 0)
 {
 _abs_ = -input;
@@ -96,7 +96,7 @@ return (count);
 char *convert_snum(long int num, int base, int flags)
 {
 static char *array;
-static char buffer[50];
+static char bufes[50];
 char sign = 0;
 char *ptr;
 unsigned long n = num;
@@ -107,7 +107,7 @@ n = -num;
 sign = '-';
 }
 array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-ptr = &buffer[49];
+ptr = &bufes[49];
 *ptr = '\0';
 
 while (n != 0)

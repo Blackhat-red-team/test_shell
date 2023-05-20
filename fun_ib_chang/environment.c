@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * copy_environ_strings - returns the string array copy of our environ
+ * cp_evviron_str - returns the string array copy of our environ
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-char **copy_environ_strings(info_t *info)
+char **cp_evviron_str(info_t *info)
 {
 if (!info->environ || info->env_changed)
 {
-info->environ = list_to_strings(info->env);
+info->environ = liis_t_str(info->env);
 info->env_changed = 0;
 }
 
@@ -35,10 +35,10 @@ return (0);
 
 for (; node; node = node->next, v++)
 {
-p = starts_with(node->str, var);
+p = stres_wi(node->str, var);
 if (p && *p == '=')
 {
-info->env_changed = delete_node_at_index(&(info->env), v);
+info->env_changed = rm_nod_a_ind(&(info->env), v);
 v = 0;
 node = info->env;
 continue;
@@ -64,16 +64,16 @@ char *p;
 if (!var || !value)
 return (0);
 
-buf = malloc(_strlen(var) + _strlen(value) + 2);
+buf = malloc(_stles(var) + _stles(value) + 2);
 if (!buf)
 return (1);
-_strcpy(buf, var);
-_strcat(buf, "=");
-_strcat(buf, value);
+_stcop(buf, var);
+_stcet(buf, "=");
+_stcet(buf, value);
 node = info->env;
 for (; node; node = node->next)
 {
-p = starts_with(node->str, var);
+p = stres_wi(node->str, var);
 if (p && *p == '=')
 {
 free(node->str);
@@ -82,7 +82,7 @@ info->env_changed = 1;
 return (0);
 }
 }
-add_node_end(&(info->env), buf, 0);
+adn_no_ed(&(info->env), buf, 0);
 free(buf);
 info->env_changed = 1;
 return (0);

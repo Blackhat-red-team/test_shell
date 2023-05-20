@@ -1,8 +1,8 @@
 echo: echo [-neE] [arg ...]
-    Write arguments to the standard output.
+    Write arguments to the standard out.
 
     Display the ARGs, separated by a single space character and followed by a
-    newline, on the standard output.
+    newline, on the standard out.
 
     Options:
       -n        do not append a newline
@@ -12,7 +12,7 @@ echo: echo [-neE] [arg ...]
     `echo' interprets the following backslash-escaped characters:
       \a        alert (bell)
       \b        backspace
-      \c        suppress further output
+      \c        suppress further out
       \e        escape character
       \E        escape character
       \f        form feed

@@ -9,7 +9,7 @@
  */
 int _myhist(info_t *info)
 {
-print_list(info->history);
+prii_liss(info->history);
 return (0);
 }
 
@@ -25,36 +25,36 @@ int unseters_alias(info_t *info, char *str)
 char *p, c;
 int ret;
 
-p = _strchr(str, '=');
+p = _fidchr(str, '=');
 if (!p)
 return (1);
 c = *p;
 *p = 0;
-ret = delete_node_at_index(&(info->alias),
-get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+ret = rm_nod_a_ind(&(info->alias),
+gett_nodd_in(info->alias, nodd_st_wi(info->alias, str, -1)));
 *p = c;
 return (ret);
 }
 
 /**
- * set_alias - sets alias to string
+ * set_alis - sets alias to string
  * @info: parameter struct
  * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alis(info_t *info, char *str)
 {
 char *p;
 
-p = _strchr(str, '=');
+p = _fidchr(str, '=');
 if (!p)
 return (1);
 if (!*++p)
 return (unseters_alias(info, str));
 
 unseters_alias(info, str);
-return (add_node_end(&(info->alias), str, 0) == NULL);
+return (adn_no_ed(&(info->alias), str, 0) == NULL);
 }
 
 /**
@@ -69,12 +69,12 @@ char *p = NULL, *a = NULL;
 
 if (node)
 {
-p = _strchr(node->str, '=');
+p = _fidchr(node->str, '=');
 while (a <= p)
-_putchar(*a++);
-_putchar('\'');
-_puts(p + 1);
-_puts("'\n");
+_puuchi(*a++);
+_puuchi('\'');
+_puuss(p + 1);
+_puuss("'\n");
 return (0);
 }
 return (1);
@@ -104,11 +104,11 @@ return (0);
 }
 for (v = 1; info->argv[v]; v++)
 {
-p = _strchr(info->argv[v], '=');
+p = _fidchr(info->argv[v], '=');
 if (p)
-set_alias(info, info->argv[v]);
+set_alis(info, info->argv[v]);
 else
-print_alias_string(node_starts_with(info->alias, info->argv[v], '='));
+print_alias_string(nodd_st_wi(info->alias, info->argv[v], '='));
 }
 
 return (0);

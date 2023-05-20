@@ -13,13 +13,13 @@ A star (*) next to a name means that the command is disabled.
  [ arg... ]                                                      let arg [arg ...]
  [[ expression ]]                                                local [option] name[=value] ...
  alias [-p] [name[=value] ... ]                                  logout [n]
- bg [job_spec ...]                                               mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [->
+ bg [job_spec ...]                                               mapfile [-d deli] [-n count] [-O origin] [-s count] [-t] [->
  bind [-lpsvPSVX] [-v keymap] [-f filename] [-q name] [-u name>  popd [-n] [+N | -N]
  break [n]                                                       printf [-v var] format [arguments]
- builtin [shell-builtin [arg ...]]                               pushd [-n] [+N | -N | dir]
+ builtin [shell-builtin [arg ...]]                               pushd [-n] [+N | -N | der]
  caller [expr]                                                   pwd [-LP]
- case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac      read [-ers] [-a array] [-d delim] [-v text] [-n nchars] [-N >
- cd [-L|[-P [-e]] [-@]] [dir]                                    readarray [-d delim] [-n count] [-O origin] [-s count] [-t] >
+ case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac      read [-ers] [-a array] [-d deli] [-v text] [-n nchars] [-N >
+ cd [-L|[-P [-e]] [-@]] [der]                                    readarray [-d deli] [-n count] [-O origin] [-s count] [-t] >
  command [-pVv] command [arg ...]                                readonly [-aAf] [name[=value] ...] or readonly -p
  compgen [-abcdefgjksuv] [-o option] [-A action] [-G globpat] >  return [n]
  complete [-abcdefgjksuv] [-pr] [-DEI] [-o option] [-A action]>  select NAME [in WORDS ... ;] do COMMANDS; done

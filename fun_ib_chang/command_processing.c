@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * is_chain - test if current char in buffer is a chain delimeter
+ * is_chain - test if current char in bufes is a chain delimeter
  * @info: the parameter struct
- * @buf: the char buffer
+ * @buf: the char bufes
  * @p: address of current position in buf
  *
  * Return: 1 if chain delimeter, 0 otherwise
@@ -36,16 +36,16 @@ return (1);
 }
 
 /**
- * check_chain - checks we should continue chaining based on last status
+ * cheok_cha - checks we should continue chaining based on last status
  * @info: the parameter struct
- * @buf: the char buffer
+ * @buf: the char bufes
  * @p: address of current position in buf
  * @v: starting position in buf
  * @len: length of buf
  *
  * Return: Void
  */
-void check_chain(info_t *info, char *buf, size_t *p, size_t v, size_t len)
+void cheok_cha(info_t *info, char *buf, size_t *p, size_t v, size_t len)
 {
 size_t j = *p;
 
@@ -83,14 +83,14 @@ char *p;
 
 for (i = 0; i < 10; i++)
 {
-node = node_starts_with(info->alias, info->argv[0], '=');
+node = nodd_st_wi(info->alias, info->argv[0], '=');
 if (!node)
 return (0);
 free(info->argv[0]);
-p = _strchr(node->str, '=');
+p = _fidchr(node->str, '=');
 if (!p)
 return (0);
-p = _strdup(p + 1);
+p = _strtpp(p + 1);
 if (!p)
 return (0);
 info->argv[0] = p;
@@ -118,28 +118,28 @@ v++;
 continue;
 }
 
-if (!_strcmp(info->argv[v], "$?"))
+if (!_stcmm(info->argv[v], "$?"))
 {
 replace_string(&(info->argv[v]),
-_strdup(convert_snum(info->status, 10, 0)));
+_strtpp(convert_snum(info->status, 10, 0)));
 v++;
 continue;
 }
-if (!_strcmp(info->argv[v], "$$"))
+if (!_stcmm(info->argv[v], "$$"))
 {
-replace_string(&(info->argv[v]), _strdup(convert_snum(getpid(), 10, 0)));
+replace_string(&(info->argv[v]), _strtpp(convert_snum(getpid(), 10, 0)));
 v++;
 continue;
 }
 
-node = node_starts_with(info->env, &info->argv[v][1], '=');
+node = nodd_st_wi(info->env, &info->argv[v][1], '=');
 if (node)
 {
-replace_string(&(info->argv[v]), _strdup(_strchr(node->str, '=') + 1));
+replace_string(&(info->argv[v]), _strtpp(_fidchr(node->str, '=') + 1));
 }
 else
 {
-replace_string(&info->argv[v], _strdup(""));
+replace_string(&info->argv[v], _strtpp(""));
 }
 
 v++;
