@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * cledel_inf - initializes info_t struct
- * @info: struct address
- */
+ ** cledel_inf - establishes the info_t struct.
+ ** @info: address in struct.
+ **/
 void cledel_inf(info_t *info)
 {
 info->arg = NULL;
@@ -13,10 +13,10 @@ info->argc = 0;
 }
 
 /**
- * sett_inf - initializes info_t struct
- * @info: struct address
- * @av: argument vector
- */
+ ** sett_inf - establishes the info_t struct.
+ ** @info: address in struct.
+ ** @av: argument type.
+ **/
 void sett_inf(info_t *info, char **av)
 {
 int v = 0;
@@ -45,10 +45,10 @@ replace_vars(info);
 }
 
 /**
- * fr_inf - frees info_t struct fields
- * @info: struct address
- * @all: true if freeing all fields
- */
+ ** fr_inf - releases info_t struct fields.
+ ** @info: address in struct.
+ ** @all: true if all fields are freed.
+ **/
 void fr_inf(info_t *info, int all)
 {
 ffrre(info->argv);

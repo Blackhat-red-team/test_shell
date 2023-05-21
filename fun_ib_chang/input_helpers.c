@@ -1,22 +1,21 @@
 #include "shell.h"
 
 /**
- * active - returns true if shell is active mode
- * @info: struct address
- *
- * Return: 1 if active mode, 0 otherwise
-*/
+ ** active - if the shell is in active mode, it returns true.
+ ** @info: address in struct.
+ ** Return: 1 if the mode is activated; 0 otherwise.
+**/
 int active(info_t *info)
 {
 return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
- * ist_de - checks if character is a delimeter
- * @c: the char to check
- * @deli: the delimeter string
- * Return: 1 if true, 0 if false
- */
+ ** ist_de - determines whether a character is a delimeter.
+ ** @c: a character to check.
+ ** @deli: the string of delimeter.
+ ** Return: 0 if false, 1 if true.
+ **/
 int ist_de(char c, char *deli)
 {
 while (*deli)
@@ -26,10 +25,10 @@ return (0);
 }
 
 /**
- *_isph - checks for alphabetic character
- *@c: The character to input
- *Return: 1 if c is alphabetic, 0 otherwise
- */
+ **_isph - makes an alphabetic character check.
+ **@c: The input character.
+ **Return: 0 else, 1 if c is alphabetical.
+ **/
 
 int _isph(int c)
 {
@@ -40,10 +39,11 @@ return (0);
 }
 
 /**
- *_atii - converts a string to an integer
- *@s: the string to be converted
- *Return: 0 if no numbers in string, converted number otherwise
- */
+ **_atii - creates an integer from a string.
+ **@s: the string being transformed.
+ **Return: 0 if the string contains no numbers,
+ ** else, a converted number.
+ **/
 
 int _atii(char *s)
 {

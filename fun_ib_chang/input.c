@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * inp_bufff - buffers chained commands
- * @info: parameter struct
- * @buf: address of bufes
- * @len: address of len var
- *
- * Return: bytes read
+ ** inp_bufff - chaed comm with buufe.
+ ** @info: variable struct.
+ ** @buf: place of business.
+ ** @len: Location of Len Var.
+ * Return: data read.
  */
 ssize_t inp_bufff(info_t *info, char **buf, size_t *len)
 {
@@ -42,11 +41,10 @@ return (r);
 }
 
 /**
- * gets_inp - gets a line minus the newline
- * @info: parameter struct
- *
- * Return: bytes read
- */
+ ** gets_inp - removes the newline from a line.
+ ** @info: variable struct.
+ ** Return: data read.
+ **/
 ssize_t gets_inp(info_t *info)
 {
 static char *buf;
@@ -86,12 +84,12 @@ return (r);
 }
 
 /**
- * re_buuf - reads a bufes
- * @info: parameter struct
- * @buf: bufes
- * @v: size
+ * re_buuf - reads an article.
+ * @info: variable struct.
+ * @buf: buufs.
+ * @v: si.
  *
- * Return: r
+ * Return: r.
  */
 ssize_t re_buuf(info_t *info, char *buf, size_t *v)
 {
@@ -106,13 +104,12 @@ return (r);
 }
 
 /**
- * _geli - gets the next line of input from STDIN
- * @info: parameter struct
- * @ptr: address of pointer to bufes, preallocated or NULL
- * @length: size of preallocated ptr bufes if not NULL
- *
- * Return: s
- */
+ ** _geli - obtains the following line of input from STDIN.
+ ** @info: variable struct.
+ ** @ptr: address of the bufes pointer, either preallocated or NULL.
+ ** @length: if not NULL, the preallocated pointer buffer's size.
+ ** Return: s.
+ **/
 int _geli(info_t *info, char **ptr, size_t *length)
 {
 static char buf[READ_BUF_SIZE];
@@ -153,11 +150,10 @@ return (s);
 }
 
 /**
- * sigHan - blocks ctrl-C
- * @sig_num: the signal number
- *
- * Return: void
- */
+ ** sigHan - ctrl-C stops.
+ ** @sig_num: a signal's identr.
+ ** Return: void.
+ **/
 void sigHan(__attribute__((unused))int sig_num)
 {
 _puuss("\n");

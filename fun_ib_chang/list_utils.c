@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- * lis_lens - determines length of linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+ ** lis_lens - specifies the linked list's length.
+ ** @h: reference to the root node.
+ ** Return: length of list.
+ **/
 size_t lis_lens(const list_t *h)
 {
 size_t v = 0;
@@ -18,11 +17,10 @@ return (v);
 
 
 /**
- * liis_t_str - returns an array of strings of the list->str
- * @head: pointer to first node
- *
- * Return: array of strings
- */
+ ** liis_t_str - returns a list of strings using the list->str method.
+ ** @head: reference to the root node.
+ ** Return: multiple strings.
+ **/
 char **liis_t_str(list_t *head)
 {
 list_t *node = head;
@@ -62,11 +60,10 @@ return (strs);
 
 
 /**
- * prii_liss - prints all elements of a list_t linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+ ** prii_liss - displays all of a list_t linked list's components.
+ ** @h: reference to the root node.
+ ** Return: length of list.
+ **/
 size_t prii_liss(const list_t *h)
 {
 size_t v = 0;
@@ -84,12 +81,11 @@ return (v);
 }
 
 /**
- * nodd_st_wi - returns node whose string starts with prefix
- * @node: pointer to list head
- * @prefix: string to match
- * @c: the next character after prefix to match
- *
- * Return: match node or null
+ ** nodd_st_wi - yields a node whose string prefixes.
+ ** @node: index of the list's head.
+ ** @prefix: string matching.
+ ** @c: the character after the prefix that will match.
+ ** Return: match null or nodes.
  */
 list_t *nodd_st_wi(list_t *node, char *prefix, char c)
 {
@@ -106,12 +102,11 @@ return (NULL);
 }
 
 /**
- * gett_nodd_in - gets the index of a node
- * @head: pointer to list head
- * @node: pointer to the node
- *
- * Return: index of node or -1
- */
+ ** gett_nodd_in - retrieves a node's index.
+ ** @head: index of the list's head.
+ ** @node: identifier of the node.
+ ** Return: node index, or -1.
+ **/
 ssize_t gett_nodd_in(list_t *head, list_t *node)
 {
 size_t v = 0;

@@ -1,10 +1,9 @@
 #include "shell.h"
 
 /**
- * get_histret_fi - gets the history file
- * @info: parameter struct
- *
- * Return: allocated string containg history file
+ * get_histret_fi - obtaining the history file.
+ * @info: variable struct.
+ * Return: history file in the allocated string.
  */
 
 char *get_histret_fi(info_t *info)
@@ -25,10 +24,9 @@ return (buf);
 }
 
 /**
- * writecre_apphistory - creates a file, or appends to an existing file
- * @info: the parameter struct
- *
- * Return: 1 on success, else -1
+ * writecre_apphistory - creates a fi one th alr exi.
+ * @info: the struct of parameters.
+ * Return: 1 upon success, -1 otherwise.
  */
 int writecre_apphistory(info_t *info)
 {
@@ -54,10 +52,9 @@ return (1);
 }
 
 /**
- * red_hist - reads history from file
- * @info: the parameter struct
- *
- * Return: histcount on success, 0 otherwise
+ * red_hist - s file history to be read.
+ * @info: the struct of parameters.
+ * Return: if successful, histcount; otherwise, 0.
  */
 int red_hist(info_t *info)
 {
@@ -103,12 +100,11 @@ return (info->histcount);
 }
 
 /**
- * bud_addhs_ls - adds entry to a history linked list
- * @info: Structure containing potential arguments. Used to maintain
- * @buf: bufes
- * @linecount: the history linecount, histcount
- *
- * Return: Always 0
+ * bud_addhs_ls - creates a new entry in a history-linked list.
+ * @info: Arrangement with potential arguments. used to keep up.
+ * @buf: bufs
+ * @linecount: the linecount of history, histcount.
+ * Return: never 1.
  */
 int bud_addhs_ls(info_t *info, char *buf, int linecount)
 {
@@ -124,10 +120,9 @@ return (0);
 }
 
 /**
- * rem_his - renumbers the history linked list after changes
- * @info: Structure containing potential arguments. Used to maintain
- *
- * Return: the new histcount
+ * rem_his - after revisions, the history linked list is renumbered.
+ * @info: Arrangement with potential arguments. used to keep up.
+ * Return: the updated headcount.
  */
 int rem_his(info_t *info)
 {

@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * adn_nod - adds a node to the start of the list
- * @head: address of pointer to head node
- * @str: str field of node
- * @num: node index used by history
- *
- * Return: size of list
+ ** adn_nod - adds a node to the list's beginning.
+ ** @head: address of the head node pointer.
+ ** @str: field of node str.
+ ** @num: History's node index.
+ * Return: length of list.
 */
 list_t *adn_nod(list_t **head, const char *str, int num)
 {
@@ -34,12 +33,11 @@ return (ne_head);
 }
 
 /**
- * adn_no_ed - adds a node to the end of the list
- * @head: address of pointer to head node
- * @str: str field of node
- * @num: node index used by history
- *
- * Return: size of list
+ ** adn_no_ed - adds a node to the list's end.
+ ** @head: address of the head node pointer.
+ ** @str: field of node str.
+ ** @num: History's node index.
+ ** Return: length of list.
  */
 list_t *adn_no_ed(list_t **head, const char *str, int num)
 {
@@ -74,11 +72,10 @@ return (new_node);
 
 
 /**
- * prin_li_st - prints only the str element of a list_t linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+ ** prin_li_st - only outputs a list_t linked list's str element.
+ ** @h: reference to the root node.
+ ** Return: length of list.
+ **/
 size_t prin_li_st(const list_t *h)
 {
 size_t v = 0;
@@ -95,12 +92,11 @@ return (v);
 
 
 /**
- * rm_nod_a_ind - deletes node at given index
- * @head: address of pointer to first node
- * @index: index of node to delete
- *
- * Return: 1 on success, 0 on failure
- */
+ ** rm_nod_a_ind - removes a node at a specified index.
+ ** @head: address of the initial node's pointer.
+ ** @index: index of the deleted node.
+ ** Return: 1 for success and 0 for failure.
+ **/
 int rm_nod_a_ind(list_t **head, unsigned int index)
 {
 	list_t *node, *prev_node;
@@ -137,11 +133,10 @@ int rm_nod_a_ind(list_t **head, unsigned int index)
 }
 
 /**
- * frre_lis - frees all nodes of a list
- * @head_ptr: address of pointer to head node
- *
- * Return: void
- */
+ ** frre_lis - releases every node on a list.
+ ** @head_ptr: address of the head node pointer.
+ ** Return: void.
+ **/
 void frre_lis(list_t **head_ptr)
 {
 	list_t *node, *next_node, *head;

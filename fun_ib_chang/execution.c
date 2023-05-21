@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * hsh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
+ * hsh - main general shell loop.
+ * @info: information struct parameters and returns.
+ * @av: the main() argument vector.
  *
- * Return: 0 on success, 1 on error, or error code
+ * Return: One for triumphs, zero for mistakes, or an error code.
  */
 int hsh(info_t *info, char **av)
 {
@@ -44,13 +44,12 @@ return (builtin_ret);
 }
 
 /**
- * findloc_builtinco - finds a builtin command
- * @info: the parameter & return info struct
- *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
+ * findloc_builtinco - identifies a built-in command.
+ * @info: information struct for parameters and returns.
+ * Return: -1 if a built-in cannot be discovered,
+ *			0 if the builtin was successfully run,
+ *			if a built-in is found but not used,
+ *			If built-in signals exit(), it is -2.
  */
 int findloc_builtinco(info_t *info)
 {
@@ -78,10 +77,9 @@ return (buuilt_i_re);
 }
 
 /**
- * find_command - finds a command in PATH
- * @info: the parameter & return info struct
- *
- * Return: void
+ * find_command - search for a command in PATH.
+ * @info: information struct for parameters and returns.
+ * Return: void.
  */
 void find_command(info_t *info)
 {
@@ -120,10 +118,9 @@ print_errorms(info, "not found\n");
 }
 
 /**
- * fork_command - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
- *
- * Return: void
+ * fork_command - runs cmd after forking an exec thread.
+ * @info: information struct for parameters and returns.
+ * Return: void.
  */
 void fork_command(info_t *info)
 {
@@ -132,7 +129,7 @@ pid_t child_pid;
 child_pid = fork();
 if (child_pid == -1)
 {
-/* TODO: PUT ERROR FUNCTION */
+
 perror("Error:");
 return;
 }
@@ -145,7 +142,7 @@ if (errno == EACCES)
 exit(126);
 exit(1);
 }
-/* TODO: PUT ERROR FUNCTION */
+
 }
 else
 {
@@ -155,6 +152,6 @@ if (WIFEXITED(info->status))
 info->status = WEXITSTATUS(info->status);
 if (info->status == 126)
 print_errorms(info, "Permission denied\n");
-		}
-	}
+}
+}
 }

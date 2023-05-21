@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- **_cpsrting - copies a string
- *@dest: the destination string to be copied to
- *@src: the source string
- *@n: the amount of characters to be copied
- *Return: the concatenated string
+ **_cpsrting - duplicates a string.
+ *@dest: the string to be copied to at the destination.
+ *@src: the original string.
+ *@n: how many characters will be duplicated.
+ *Return: the string that has been joined.
  */
 char *_cpsrting(char *dest, char *src, int n)
 {
@@ -32,11 +32,11 @@ return (s);
 }
 
 /**
- **_copncatsr - concatenates two strings
- *@dest: the first string
- *@src: the second string
- *@n: the amount of bytes to be maximally used
- *Return: the concatenated string
+ **_copncatsr - joins two strings together.
+ *@dest: the opening string.
+ *@src: the backup group.
+ *@n: the backup group.
+ *Return: the string that has been joined.
  */
 char *_copncatsr(char *dest, char *src, int n)
 {
@@ -64,10 +64,10 @@ return (s);
 }
 
 /**
- **_fidchr - locates a character in a string
- *@s: the string to be parsed
- *@c: the character to look for
- *Return: (s) a pointer to the memory area s
+ **_fidchr - seeks out a character within a string.
+ *@s: to be parsed is the string.
+ *@c: the person to watch out for.
+ *Return: (s) a reference to the memory location s.
  */
 char *_fidchr(char *s, char c)
 {
