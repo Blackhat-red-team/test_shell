@@ -1,7 +1,7 @@
 #include "shell.h"
 
-/***
- ***_memfill - gives memory a constant byte of data.
+/**
+ **_memfill - gives memory a constant byte of data.
  **@s: the memory area's pointer.
  **@b: the byte that *s should contain.
  **@n: the number of bytes that must be filled.

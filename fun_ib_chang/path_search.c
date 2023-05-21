@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- ** is_comdd - tests a file to see if it is an executable command
- ** @info: data structure.
- ** @path: url of the file.
- ** Return: 0 if false, 1 if true.
+ * is_comdd - tests a file to see if it is an executable command
+ * @info: data structure.
+ * @path: url of the file.
+ * Return: 0 if false, 1 if true.
  **/
 int is_comdd(info_t *info, char *path)
 {
@@ -41,7 +41,7 @@ return (buf);
 }
 
 /**
- *8 fed_putt - the PATH string identifies this command.
+ ** fed_putt - the PATH string identifies this command.
  ** @info: data structure.
  ** @pathstr: PATH is a string.
  ** @cmd: a command to use.
