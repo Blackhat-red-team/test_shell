@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- *_eppu - prints an input string
- * @str: the string to be printed
- *
- * Return: Nothing
- */
+ **_eppu - prints a string of input.
+ ** @str: a string that will be printed.
+ ** Return: Nothing.
+ **/
 void _eppu(char *str)
 {
 int v = 0;
@@ -20,12 +19,11 @@ v++;
 }
 
 /**
- * _epitch - writes the character c to stderr
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
+ ** _epitch - adds the letter C to stderr.
+ ** @c: The text to be printed.
+ ** Return: Regarding achievement 1.
+ ** On error, Errno is set appropriately and a value of -1 is returned.
+ **/
 int _epitch(char c)
 {
 static int v;
@@ -42,13 +40,12 @@ return (1);
 }
 
 /**
- * _puiuf - writes the character c to given fd
- * @c: The character to print
- * @fd: The filedescriptor to write to
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
+ ** _puiuf - writes the letter C to the specified fd.
+ ** @c: The text to be printed.
+ ** @fd: The address to write to is.
+ ** Return: Regarding achievement 1.
+ ** On error, Errno is set appropriately and a value of -1 is returned.
+ **/
 int _puiuf(char c, int fd)
 {
 static int v;
@@ -65,11 +62,10 @@ return (1);
 }
 
 /**
- *_puqsd - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
- *
- * Return: the number of chars put
+ **_puqsd - prints a string of input
+ ** @str: a string that will be printed.
+ ** @fd: The address to contact is.
+ ** Return: amount of characters entered.
  */
 int _puqsd(char *str, int fd)
 {

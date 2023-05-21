@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * is_comdd - determines if a file is an executable command
- * @info: the info struct
- * @path: path to the file
- *
- * Return: 1 if true, 0 otherwise
- */
+ ** is_comdd - tests a file to see if it is an executable command
+ ** @info: data structure.
+ ** @path: url of the file.
+ ** Return: 0 if false, 1 if true.
+ **/
 int is_comdd(info_t *info, char *path)
 {
 struct stat st;
@@ -23,13 +22,12 @@ return (0);
 }
 
 /**
- * da_ch - duplicates characters
- * @pathstr: the PATH string
- * @start: starting index
- * @stop: stopping index
- *
- * Return: pointer to new bufes
- */
+ ** da_ch - characters with duplicates.
+ ** @pathstr: PATH is a string.
+ ** @start: beginning index.
+ ** @stop: halting index.
+ ** Return: pointing to a new file.
+ **/
 char *da_ch(char *pathstr, int start, int stop)
 {
 static char buf[1024];
@@ -43,13 +41,12 @@ return (buf);
 }
 
 /**
- * fed_putt - finds this cmd in the PATH string
- * @info: the info struct
- * @pathstr: the PATH string
- * @cmd: the cmd to find
- *
- * Return: full path of cmd if found or NULL
- */
+ *8 fed_putt - the PATH string identifies this command.
+ ** @info: data structure.
+ ** @pathstr: PATH is a string.
+ ** @cmd: a command to use.
+ ** Return: complete path of the command, if found, or NULL.
+ **/
 char *fed_putt(info_t *info, char *pathstr, char *cmd)
 {
 int v, curr_pos = 0;
