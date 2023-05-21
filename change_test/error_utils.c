@@ -1,18 +1,21 @@
 #include "shell.h"
 
+
 /**
- * _erratoi - converts a string to an integer
- * @s: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
- *       -1 on error
+ * _erratoi - convert string to int
+ * @s: string which conveted
+ * Return: 0 if no num in string, converted num -1 if there and error
  */
+
+
 int _erratoi(char *s)
 {
 int v = 0;
 unsigned long int result = 0;
 
 if (*s == '+')
-s++;  /* TODO: why does this make main return 255? */
+s++;
+
 for (v = 0;  s[v] != '\0'; v++)
 {
 if (s[v] >= '0' && s[v] <= '9')
@@ -23,18 +26,20 @@ if (result > INT_MAX)
 return (-1);
 }
 else
+
 return (-1);
 }
 return (result);
 }
 
+
 /**
- * print_error - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
- * Return: 0 if no numbers in string, converted number otherwise
- *        -1 on error
+ * print_error - show error
+ * @info: parameter & return struct
+ * @estr: string contain specific error type
+ * Return: 0 if no num in string convert num to -1 on error
  */
+
 void print_error(info_t *info, char *estr)
 {
 _eputs(info->fname);
@@ -48,11 +53,11 @@ _eputs(estr);
 
 /**
  * print_d - function prints a decimal (integer) number (base 10)
- * @input: the input
- * @fd: the filedescriptor to write to
- *
- * Return: number of characters printed
+ * @input: input
+ * @fd: filedescriptor to write to
+ * Return: num of char which will printed
  */
+
 int print_d(int input, int fd)
 {
 int (*__putchar)(char) = _putchar;
@@ -86,13 +91,13 @@ return (count);
 }
 
 /**
- * convert_number - converter function, a clone of itoa
- * @num: number
+ * convert_number - convert function clone
+ * @num: numb
  * @base: base
- * @flags: argument flags
- *
+ * @flags: argu flag
  * Return: string
  */
+
 char *convert_number(long int num, int base, int flags)
 {
 static char *array;
@@ -122,11 +127,12 @@ return (ptr);
 }
 
 /**
- * remove_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the string to modify
- *
- * Return: Always 0;
+ * remove_comments - function replaces first '#' with '\0'
+ * @buf: address of string
+ * Return: 0
  */
+
+
 void remove_comments(char *buf)
 {
 int v;
@@ -134,6 +140,7 @@ int v;
 for (v = 0; buf[v] != '\0'; v++)
 if (buf[v] == '#' && (!v || buf[v - 1] == ' '))
 {
+
 buf[v] = '\0';
 break;
 }

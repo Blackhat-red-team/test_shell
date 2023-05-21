@@ -1,12 +1,13 @@
 #include "shell.h"
 
+
 /**
  * hsh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
- *
- * Return: 0 on success, 1 on error, or error code
+ * @info: parameter & return info struct
+ * @av: argu vector
+ * Return: if success return 0 if there error return 1 or error in code
  */
+
 int hsh(info_t *info, char **av)
 {
 ssize_t r = 0;
@@ -43,15 +44,18 @@ exit(info->err_num);
 return (builtin_ret);
 }
 
+
+
 /**
- * find_builtin - finds a builtin command
- * @info: the parameter & return info struct
+ * find_builtin - find  builtin command
+ * @info: parameter & return info struct
  *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
+ * Return: -1 builtin not found,
+ *			0  builtin executed successfully,
+ *			1  builtin found but not successful,
+ *			-2 builtin signals exit()
  */
+
 int find_builtin(info_t *info)
 {
 int i, built_in_ret = -1;
@@ -77,12 +81,14 @@ break;
 return (built_in_ret);
 }
 
+
 /**
- * find_cmd - finds a command in PATH
- * @info: the parameter & return info struct
- *
+ * find_cmd - find command in PATH
+ * @info: parameter & return info struct
  * Return: void
  */
+
+
 void find_cmd(info_t *info)
 {
 char *path = NULL;
@@ -120,11 +126,11 @@ print_error(info, "not found\n");
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
+ * fork_cmd - fork an exe run cmd
  * @info: the parameter & return info struct
- *
  * Return: void
  */
+
 void fork_cmd(info_t *info)
 {
 pid_t child_pid;
@@ -132,7 +138,7 @@ pid_t child_pid;
 child_pid = fork();
 if (child_pid == -1)
 {
-/* TODO: PUT ERROR FUNCTION */
+
 perror("Error:");
 return;
 }
@@ -145,7 +151,7 @@ if (errno == EACCES)
 exit(126);
 exit(1);
 }
-/* TODO: PUT ERROR FUNCTION */
+
 }
 else
 {
@@ -155,6 +161,6 @@ if (WIFEXITED(info->status))
 info->status = WEXITSTATUS(info->status);
 if (info->status == 126)
 print_error(info, "Permission denied\n");
-		}
-	}
+}
+}
 }

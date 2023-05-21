@@ -1,10 +1,9 @@
 #include "shell.h"
 
 /**
- * get_history_file - gets the history file
+ * get_history_file - get history of file
  * @info: parameter struct
- *
- * Return: allocated string containg history file
+ * Return: allocat string containg history of file
  */
 
 char *get_history_file(info_t *info)
@@ -24,12 +23,14 @@ _strcat(buf, HIST_FILE);
 return (buf);
 }
 
+
 /**
- * write_history - creates a file, or appends to an existing file
- * @info: the parameter struct
- *
- * Return: 1 on success, else -1
+ * write_history - make create file append to an existing s file
+ * @info: parameter struct
+ * Return: if success 1 else -1
  */
+
+
 int write_history(info_t *info)
 {
 ssize_t fd;
@@ -53,12 +54,13 @@ close(fd);
 return (1);
 }
 
+
 /**
- * read_history - reads history from file
- * @info: the parameter struct
- *
- * Return: histcount on success, 0 otherwise
+ * read_history - read history from file
+ * @info: parameter struct
+ * Return: histcount on success 0 otherwise
  */
+
 int read_history(info_t *info)
 {
 int i, last = 0, linecount = 0;
@@ -103,13 +105,14 @@ return (info->histcount);
 }
 
 /**
- * build_history_list - adds entry to a history linked list
+ * build_history_list - add dsf entry to a history linked list
  * @info: Structure containing potential arguments. Used to maintain
  * @buf: buffer
- * @linecount: the history linecount, histcount
+ * @linecount: the history lineco histcount
  *
  * Return: Always 0
  */
+
 int build_history_list(info_t *info, char *buf, int linecount)
 {
 list_t *node = NULL;
@@ -124,11 +127,12 @@ return (0);
 }
 
 /**
- * renumber_history - renumbers the history linked list after changes
- * @info: Structure containing potential arguments. Used to maintain
- *
- * Return: the new histcount
+ * renumber_history - afds renumber the history linked list after change
+ * @info: structure containing potential argu
+ * Return: count
  */
+
+
 int renumber_history(info_t *info)
 {
 list_t *node = info->history;
