@@ -1,14 +1,17 @@
 #include "shell.h"
 
 /**
- * is_chain - test if current char in buffer is a chain delimeter
- * @info: the parameter struct
- * @buf: char buffer
+ * is_chain - test if chain palamter
+ * @info: parmater struct
+ * @buf: char of buffer
  * @p: addresss of buffer char
- * Return: if chain palameter return 1 esle return 0
+ * Return: chain paramter return 1 else 0
  */
+
 int is_chain(info_t *info, char *buf, size_t *p)
 {
+
+
 size_t j = *p;
 
 if (buf[j] == '|' && buf[j + 1] == '|')
@@ -17,17 +20,20 @@ buf[j] = 0;
 j++;
 info->cmd_buf_type = CMD_OR;
 }
+
 else if (buf[j] == '&' && buf[j + 1] == '&')
 {
 buf[j] = 0;
 j++;
 info->cmd_buf_type = CMD_AND;
 }
-else if (buf[j] == ';') /* found end of this command */
+
+else if (buf[j] == ';')
 {
-buf[j] = 0; /* replace semicolon with null */
+buf[j] = 0;
 info->cmd_buf_type = CMD_CHAIN;
 }
+
 else
 return (0);
 *p = j;
@@ -35,15 +41,15 @@ return (1);
 }
 
 /**
- * check_chain - checks we should continue chaining based on last status
+ * check_chain - checks we should continue chaining go last status
  * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
- * @v: starting position in buf
- * @len: length of buf
- *
+ * @buf: the char buff
+ * @p: address of current position in buffer
+ * @v: starting position buffer
+ * @len: length of buffer
  * Return: Void
  */
+
 void check_chain(info_t *info, char *buf, size_t *p, size_t v, size_t len)
 {
 size_t j = *p;
@@ -74,6 +80,7 @@ j = len;
  *
  * Return: 1 if replaced, 0 otherwise
  */
+
 int replace_alias(info_t *info)
 {
 int i;
@@ -101,15 +108,16 @@ return (1);
 /**
  * replace_vars - replaces vars in the tokenized string
  * @info: the parameter struct
- *
  * Return: 1 if replaced, 0 otherwise
  */
+
 int replace_vars(info_t *info)
 {
 int v = 0;
 list_t *node;
 
 while (info->argv[v])
+
 {
 if (info->argv[v][0] != '$' || !info->argv[v][1])
 {
@@ -147,14 +155,14 @@ v++;
 return (0);
 }
 
-
 /**
  * replace_string - replaces string
  * @old: address of old string
  * @new: new string
- *
- * Return: 1 if replaced, 0 otherwise
+ * Return: if 1 replace, esle 0
  */
+
+
 int replace_string(char **old, char *new)
 {
 free(*old);

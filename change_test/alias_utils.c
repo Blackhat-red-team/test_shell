@@ -41,7 +41,7 @@ return (ret);
  * set_alias - transform alias to string
  * @info: struct paramter
  * @str: alias stirng
- * Return: Always 0 on success, 1 on error
+ * Return: o if success if 1 if there an any error
  */
 
 int set_alias(info_t *info, char *str)
