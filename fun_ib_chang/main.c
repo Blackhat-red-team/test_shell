@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
- ** main - entry point
+ ** main - point
  ** @ac: arg count
  ** @av: arg vector
  ** Return: 0 on success, 1 on error
 */
+
 #include "shell.h"
 
 int main(int ac, char **av)
@@ -40,6 +41,7 @@ return (EXIT_FAILURE);
 }
 info->readfd = fd;
 }
+
 
 populate_evv_li(info);
 red_hist(info);
