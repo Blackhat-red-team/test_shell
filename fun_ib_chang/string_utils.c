@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _stcop - copies a string
- * @dest: the destination
- * @src: the source
- *
+ * _stcop - copy string
+ * @dest: destination
+ * @src: source
  * Return: pointer to destination
  */
+
 char *_stcop(char *dest, char *src)
 {
 int v = 0;
@@ -23,11 +23,11 @@ return (dest);
 }
 
 /**
- * _strtpp - duplicates a string
- * @str: the string to duplicate
- *
- * Return: pointer to the duplicated string
+ * _strtpp - duplicate string
+ * @str: duplicate strings 
+ * Return: string reference to the replicate text
  */
+
 char *_strtpp(const char *str)
 {
 int length = 0;
@@ -46,11 +46,11 @@ return (ret);
 }
 
 /**
- *_puuss - prints an input string
- *@str: the string to be printed
- *
- * Return: Nothing
+ *_puuss - print an input string
+ *@str: string to be printed
+ * Return: nothing
  */
+
 void _puuss(char *str)
 {
 int v = 0;
@@ -65,11 +65,10 @@ v++;
 }
 
 /**
- * _puuchi - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * _puuchi - write char c to stdout
+ * @c: char to print
+ * Return: 1. * If everything goes well,
+ *  -1 is returned, and errno is set accordingly.
  */
 int _puuchi(char c)
 {

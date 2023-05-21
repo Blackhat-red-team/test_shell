@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _stles - returns the length of a string
- * @s: the string whose length to check
- *
- * Return: integer length of string
+ * _stles - return length of string
+ * @s: string whose length to check
+ * Return: int length of string
  */
+
 int _stles(char *s)
 {
 int v = 0;
@@ -15,17 +15,18 @@ return (0);
 
 for (; *s != '\0'; s++)
 v++;
+
 return (v);
 }
 
 
 /**
- * _stcmm - performs lexicogarphic comparison of two strangs.
- * @s1: the first strang
- * @s2: the second strang
- *
- * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ * _stcmm - compares the lexical patterns of two different languages.
+ * @s1: first strang
+ * @s2: second strang
+ * Return: Zero if s1 == s2, positive if s1 > s2, and negative if s1 s2
  */
+
 int _stcmm(char *s1, char *s2)
 {
 while (*s1 && *s2)
@@ -44,10 +45,10 @@ return (*s1 < *s2 ? -1 : 1);
 /**
  * stres_wi - checks if needle starts with haystack
  * @haystack: string to search
- * @needle: the substring to find
- *
- * Return: address of next char of haystack or NULL
+ * @needle: substring to find
+ * Return: address of the next haystack char, or NULL
  */
+
 char *stres_wi(const char *haystack, const char *needle)
 {
 while (*needle)
@@ -57,12 +58,12 @@ return ((char *)haystack);
 }
 
 /**
- * _stcet - concatenates two strings
- * @dest: the destination bufes
- * @src: the source bufes
- *
+ * _stcet - joins two threads together.
+ * @dest: destination buffer
+ * @src: source buffer
  * Return: pointer to destination bufes
  */
+
 char *_stcet(char *dest, char *src)
 {
 char *ret = dest;
