@@ -59,7 +59,7 @@ typedef struct liststr
 
 
 /**
- *struct passinfo - contains fictitious arguments that can be used to call functions, 
+ *struct passinfo - contains fictitious arguments used to call functions,
  *allowing a consistent prototype for function pointer structs.
  *@arg: a string produced by getline that contains arguments
  *@argv: a collection of strings created from arg

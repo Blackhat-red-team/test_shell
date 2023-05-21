@@ -24,7 +24,7 @@ return (dest);
 
 /**
  * _strtpp - duplicate string
- * @str: duplicate strings 
+ * @str: duplicate strings
  * Return: string reference to the replicate text
  */
 

@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * is_chain - check to see if the current char in the bufes is a chain delimeter
+ * is_chain - check to see if the current char in the bufes is a chain delimete
  * @info: parameter struct
  * @buf: char buffers
  * @p: current buffer position's address
@@ -36,7 +36,7 @@ return (1);
 }
 
 /**
- * cheok_cha - based on the most recent status, determine whether we should chain checks
+ * cheok_cha - based on the most recent status, determine whet chain checks
  * @info: parameter struct
  * @buf: char buffer
  * @p: current buffer position's address
