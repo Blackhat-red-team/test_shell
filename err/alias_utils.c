@@ -1,92 +1,92 @@
 #include "shell.h"
 
 /**
- * _myhistory - displays the history list, one command by line, preceded
+ * _myhist - displays the history list, one command by line, preceded
  *              with line numbers, starting at 0.
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
  */
-int _myhistory(info_t *info)
+int _myhist(info_t *info)
 {
-print_list(info->history);
+prii_liss(info->history);
 return (0);
 }
 
 /**
- * unset_alias - sets alias to string
+ * unseters_alias - sets alias to string
  * @info: parameter struct
  * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int unseters_alias(info_t *info, char *str)
 {
 char *p, c;
 int ret;
 
-p = _strchr(str, '=');
+p = _fidchr(str, '=');
 if (!p)
 return (1);
 c = *p;
 *p = 0;
-ret = delete_node_at_index(&(info->alias),
-get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+ret = rm_nod_a_ind(&(info->alias),
+gett_nodd_in(info->alias, nodd_st_wi(info->alias, str, -1)));
 *p = c;
 return (ret);
 }
 
 /**
- * set_alias - sets alias to string
+ * set_alis - sets alias to string
  * @info: parameter struct
  * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alis(info_t *info, char *str)
 {
 char *p;
 
-p = _strchr(str, '=');
+p = _fidchr(str, '=');
 if (!p)
 return (1);
 if (!*++p)
-return (unset_alias(info, str));
+return (unseters_alias(info, str));
 
-unset_alias(info, str);
-return (add_node_end(&(info->alias), str, 0) == NULL);
+unseters_alias(info, str);
+return (adn_no_ed(&(info->alias), str, 0) == NULL);
 }
 
 /**
- * print_alias - prints an alias string
+ * print_alias_string - prints an alias string
  * @node: the alias node
  *
  * Return: Always 0 on success, 1 on error
  */
-int print_alias(list_t *node)
+int print_alias_string(list_t *node)
 {
 char *p = NULL, *a = NULL;
 
 if (node)
 {
-p = _strchr(node->str, '=');
+p = _fidchr(node->str, '=');
 while (a <= p)
-_putchar(*a++);
-_putchar('\'');
-_puts(p + 1);
-_puts("'\n");
+_puuchi(*a++);
+_puuchi('\'');
+_puuss(p + 1);
+_puuss("'\n");
 return (0);
 }
 return (1);
 }
 
 /**
- * _myalias - mimics the alias builtin (man alias)
+ * _myhelpalias - mimics the alias builtin (man alias)
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
  */
-int _myalias(info_t *info)
+int _myhelpalias(info_t *info)
 {
 int v = 0;
 char *p = NULL;
@@ -97,18 +97,18 @@ if (info->argc == 1)
 node = info->alias;
 while (node)
 {
-print_alias(node);
+print_alias_string(node);
 node = node->next;
 }
 return (0);
 }
 for (v = 1; info->argv[v]; v++)
 {
-p = _strchr(info->argv[v], '=');
+p = _fidchr(info->argv[v], '=');
 if (p)
-set_alias(info, info->argv[v]);
+set_alis(info, info->argv[v]);
 else
-print_alias(node_starts_with(info->alias, info->argv[v], '='));
+print_alias_string(nodd_st_wi(info->alias, info->argv[v], '='));
 }
 
 return (0);

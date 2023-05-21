@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * clear_info - initializes info_t struct
+ * cledel_inf - initializes info_t struct
  * @info: struct address
  */
-void clear_info(info_t *info)
+void cledel_inf(info_t *info)
 {
 info->arg = NULL;
 info->argv = NULL;
@@ -13,25 +13,25 @@ info->argc = 0;
 }
 
 /**
- * set_info - initializes info_t struct
+ * sett_inf - initializes info_t struct
  * @info: struct address
  * @av: argument vector
  */
-void set_info(info_t *info, char **av)
+void sett_inf(info_t *info, char **av)
 {
 int v = 0;
 
 info->fname = av[0];
 if (info->arg)
 {
-info->argv = strtow(info->arg, " \t");
+info->argv = sttiww(info->arg, " \t");
 if (!info->argv)
 {
 
 info->argv = malloc(sizeof(char *) * 2);
 if (info->argv)
 {
-info->argv[0] = _strdup(info->arg);
+info->argv[0] = _strtpp(info->arg);
 info->argv[1] = NULL;
 }
 }
@@ -45,13 +45,13 @@ replace_vars(info);
 }
 
 /**
- * free_info - frees info_t struct fields
+ * fr_inf - frees info_t struct fields
  * @info: struct address
  * @all: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void fr_inf(info_t *info, int all)
 {
-ffree(info->argv);
+ffrre(info->argv);
 info->argv = NULL;
 info->path = NULL;
 if (all)
@@ -59,16 +59,16 @@ if (all)
 if (!info->cmd_buf)
 free(info->arg);
 if (info->env)
-free_list(&(info->env));
+frre_lis(&(info->env));
 if (info->history)
-free_list(&(info->history));
+frre_lis(&(info->history));
 if (info->alias)
-free_list(&(info->alias));
-ffree(info->environ);
+frre_lis(&(info->alias));
+ffrre(info->environ);
 info->environ = NULL;
-bfree((void **)info->cmd_buf);
+frnpr((void **)info->cmd_buf);
 if (info->readfd > 2)
 close(info->readfd);
-_putchar(BUF_FLUSH);
+_puuchi(BUF_FLUSH);
 }
 }
