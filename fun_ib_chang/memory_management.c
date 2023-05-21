@@ -1,11 +1,10 @@
 #include "shell.h"
 
-/**
- * frnpr - frees a pointer and NULLs the address
- * @ptr: address of the pointer to free
- *
- * Return: 1 if freed, otherwise 0.
- */
+/***
+ ** frnpr - NULLizes the address and releases a pointer.
+ ** @ptr: address of the free pointer.
+ ** Return: If released, 1; otherwise, 0.
+ ***/
 int frnpr(void **ptr)
 {
 if (ptr && *ptr)

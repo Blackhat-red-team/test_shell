@@ -1,11 +1,11 @@
 #include "shell.h"
 
-/**
- **_memfill - fills memory with a constant byte
- *@s: the pointer to the memory area
- *@b: the byte to fill *s with
- *@n: the amount of bytes to be filled
- *Return: (s) a pointer to the memory area s
+/***
+ ***_memfill - gives memory a constant byte of data.
+ **@s: the memory area's pointer.
+ **@b: the byte that *s should contain.
+ **@n: the number of bytes that must be filled.
+ **Return: (s) a reference to the memory location s.
  */
 char *_memfill(char *s, char b, unsigned int n)
 {
@@ -17,9 +17,9 @@ return (s);
 }
 
 /**
- * ffrre - frees a string of strings
- * @pp: string of strings
- */
+ ** ffrre - releases a group of strings.
+ ** @pp: strings of words.
+ **/
 void ffrre(char **pp)
 {
 char **a = pp;
@@ -32,13 +32,12 @@ free(a);
 }
 
 /**
- * _reeloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @od_si: byte size of previous block
- * @nw_si: byte size of new block
- *
- * Return: pointer to da ol'block nameen.
- */
+ ** _reeloc - reallocates a memory block.
+ ** @ptr: identifier of a previously malloc'd block.
+ ** @od_si: Block size before in bytes.
+ ** @nw_si: Block size in bytes.
+ ** Return: reference to the old block nameen.
+ **/
 void *_reeloc(void *ptr, unsigned int od_si, unsigned int nw_si)
 {
 char *p;
