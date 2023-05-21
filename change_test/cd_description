@@ -16,12 +16,15 @@ cd: cd [-L|[-P [-e]] [-@]] [dir]
     Options:
       -L        force symbolic links to be followed: resolve symbolic
                 links in DIR after processing instances of `..'
+
       -P        use the physical directory structure without following
                 symbolic links: resolve symbolic links in DIR before
                 processing instances of `..'
+
       -e        if the -P option is supplied, and the current working
                 directory cannot be determined successfully, exit with
                 a non-zero status
+                
       -@        on systems that support it, present a file with extended
                 attributes as a directory containing the file attributes
 

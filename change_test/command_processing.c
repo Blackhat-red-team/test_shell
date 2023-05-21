@@ -3,10 +3,9 @@
 /**
  * is_chain - test if current char in buffer is a chain delimeter
  * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
- *
- * Return: 1 if chain delimeter, 0 otherwise
+ * @buf: char buffer
+ * @p: addresss of buffer char
+ * Return: if chain palameter return 1 esle return 0
  */
 int is_chain(info_t *info, char *buf, size_t *p)
 {
