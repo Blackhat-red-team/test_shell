@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
- * _strtoint - converts a string to an integer
- * @s: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
+ * _strtoint - convert string to integer
+ * @s: the string which conveted
+ * Return: if no number return 0 convert number otherwise
  *       -1 on error
  */
+
 int _strtoint(char *s)
 {
 int v = 0;
@@ -29,11 +30,11 @@ return (res);
 }
 
 /**
- * print_errorms - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
- * Return: 0 if no numbers in string, converted number otherwise
- *        -1 on error
+ * print_errorms - print an error message
+ * @info: parameter & return info struct
+ * @estr: string contain specified error type
+ * Return: if no num return 0 convert number otherwise
+ *       -1 on error
  */
 void print_errorms(info_t *info, char *estr)
 {
@@ -47,12 +48,12 @@ _eppu(estr);
 }
 
 /**
- * print_dec - function prints a decimal (integer) number (base 10)
- * @input: the input
- * @fd: the filedescriptor to write to
- *
- * Return: number of characters printed
+ * print_dec - function print decimal int num
+ * @input: input
+ * @fd: filedescriptor to write to
+ * Return: num of char which printed
  */
+
 int print_dec(int input, int fd)
 {
 int (*__putchar)(char) = _puuchi;
@@ -86,13 +87,13 @@ return (count);
 }
 
 /**
- * convert_snum - converter function, a clone of itoa
- * @num: number
+ * convert_snum - converter function a clone of itoa
+ * @num: num
  * @base: base
- * @flags: argument flags
- *
+ * @flags: argu flag
  * Return: string
  */
+
 char *convert_snum(long int num, int base, int flags)
 {
 static char *array;
@@ -122,11 +123,11 @@ return (ptr);
 }
 
 /**
- * replace_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the string to modify
- *
- * Return: Always 0;
+ * replace_comments - function replaces first  of '#' with '\0'
+ * @buf: address of string
+ * Return: 0
  */
+
 void replace_comments(char *buf)
 {
 int v;

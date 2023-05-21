@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * _myhist - displays the history list, one command by line, preceded
- *              with line numbers, starting at 0.
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * _myhist - displays the history list
+ * @info: structure contain potential argu
+ *  Return: 0
  */
+
 int _myhist(info_t *info)
 {
 prii_liss(info->history);
@@ -14,12 +13,12 @@ return (0);
 }
 
 /**
- * unseters_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
+ * unseters_alias - transform alias to string
+ * @info: struct paramter
+ * @str: string alias
+ * Return: if success return 0 esle 1
  */
+
 int unseters_alias(info_t *info, char *str)
 {
 char *p, c;
@@ -30,6 +29,7 @@ if (!p)
 return (1);
 c = *p;
 *p = 0;
+
 ret = rm_nod_a_ind(&(info->alias),
 gett_nodd_in(info->alias, nodd_st_wi(info->alias, str, -1)));
 *p = c;
@@ -39,10 +39,10 @@ return (ret);
 /**
  * set_alis - sets alias to string
  * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
+ * @str: string alias
+ * Return: if success return 0 esle 1
  */
+
 int set_alis(info_t *info, char *str)
 {
 char *p;
@@ -60,9 +60,9 @@ return (adn_no_ed(&(info->alias), str, 0) == NULL);
 /**
  * print_alias_string - prints an alias string
  * @node: the alias node
- *
- * Return: Always 0 on success, 1 on error
+ * Return: if success return 0 esle 1
  */
+
 int print_alias_string(list_t *node)
 {
 char *p = NULL, *a = NULL;
@@ -81,11 +81,11 @@ return (1);
 }
 
 /**
- * _myhelpalias - mimics the alias builtin (man alias)
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
+ * _myhelpalias - man alias
+ * @info: structure containing potential argu
+ *  Return: 0
  */
+
 int _myhelpalias(info_t *info)
 {
 int v = 0;
@@ -101,6 +101,7 @@ print_alias_string(node);
 node = node->next;
 }
 return (0);
+
 }
 for (v = 1; info->argv[v]; v++)
 {

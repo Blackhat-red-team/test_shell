@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _mievv - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * _mievv - print current enviroment
+ * @info: structure containing potential argu
+ * Return: 0
 */
+
 int _mievv(info_t *info)
 {
 list_t *current = info->env;
@@ -20,12 +20,12 @@ return (0);
 }
 
 /**
- * _geevv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
+ * _geevv - get value of an environ variable
+ * @info: arrangment with possible arguments used to keep up
  * @name: env var name
- *
- * Return: the value
+ * Return: value
  */
+
 char *_geevv(info_t *info, const char *name)
 {
 list_t *node = info->env;
@@ -41,12 +41,13 @@ return (p);
 return (NULL);
 }
 /**
- * _miserevv - Initialize a new environment variable,
+ * _miserevv - initialize  new environment variable
  *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
+ * @info: Arrangement with possible arguments.
+ *  used to retain the prototype of the * constant function.
  *  Return: Always 0
  */
+
 int _miserevv(info_t *info)
 {
 if (info->argc != 3)
@@ -62,10 +63,11 @@ return (1);
 
 /**
  * _miunsotevv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * @info: Arrangement with possible arguments.
+ *  used to retain the prototype of the * constant function.
+ *  Return: 0
  */
+
 int _miunsotevv(info_t *info)
 {
 int v;
@@ -83,11 +85,12 @@ return (0);
 }
 
 /**
- * populate_evv_li - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * populate_evv_li - fills in the env linked list
+ * @info: Arrangement with possible arguments.
+ *  used to retain the prototype of the * constant function.
+ * Return: 0
  */
+
 int populate_evv_li(info_t *info)
 {
 list_t *node = NULL;
